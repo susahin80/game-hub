@@ -1,8 +1,8 @@
 //from: https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg
 // to: https://media.rawg.io/media/crop/600/400/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg
-
+import noImage from '../assets/no-image-placeholder.webp';
 const getCroppedImageUrl = (url: string) => {
-    if (!url) return '';
+    if (!url) return noImage;
 
     const target = 'media/';
     const index = url.indexOf(target) + target.length;
