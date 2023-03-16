@@ -2,6 +2,7 @@ import { Box, Flex, HStack, Show } from '@chakra-ui/react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import { useState } from 'react';
 import GameGrid from './components/GameGrid';
+import GameHeading from './components/GameHeading';
 import GenreList from './components/GenreList';
 import NavBar from './components/NavBar';
 import PlatformSelector from './components/PlatformSelector';
@@ -48,23 +49,26 @@ function App() {
                 </GridItem>
             </Show>
             <GridItem area="main">
-                <Flex paddingLeft={2} marginBottom={2}>
-                    <Box marginRight={5}>
-                        <PlatformSelector
-                            onSelectPlatform={(platform) =>
-                                setGameQuery({ ...gameQuery, platform })
-                            }
-                            selectedPlatform={gameQuery.platform}
-                        />
-                    </Box>
+                <Box paddingLeft={2}>
+                    <GameHeading gameQuery={gameQuery} />
+                    <Flex marginBottom={2}>
+                        <Box marginRight={5}>
+                            <PlatformSelector
+                                onSelectPlatform={(platform) =>
+                                    setGameQuery({ ...gameQuery, platform })
+                                }
+                                selectedPlatform={gameQuery.platform}
+                            />
+                        </Box>
 
-                    <SortSelector
-                        onSelectSortOrder={(sortOrder) =>
-                            setGameQuery({ ...gameQuery, sortOrder })
-                        }
-                        sortOrder={gameQuery.sortOrder}
-                    />
-                </Flex>
+                        <SortSelector
+                            onSelectSortOrder={(sortOrder) =>
+                                setGameQuery({ ...gameQuery, sortOrder })
+                            }
+                            sortOrder={gameQuery.sortOrder}
+                        />
+                    </Flex>
+                </Box>
                 <GameGrid gameQuery={gameQuery} />
             </GridItem>
         </Grid>
